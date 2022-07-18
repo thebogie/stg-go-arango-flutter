@@ -5,6 +5,7 @@ import (
 	route "back/routes"
 	util "back/utils"
 	"log"
+	"time"
 
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/cors"
@@ -50,10 +51,13 @@ func SetupRouter() *gin.Engine {
 	@description Setup Middleware
 	*/
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:  []string{"*"},
-		AllowMethods:  []string{"*"},
-		AllowHeaders:  []string{"*"},
-		AllowWildcard: true,
+		AllowOrigins: []string{"http://localhost:4200", "http://127.0.0.1:4200"},
+		AllowMethods: []string{"PUT", "POST", "GET", "OPTIONS", "DELETE"},
+		AllowHeaders: []string{"Origin", "Content-Type", "Authorization"},
+		//AllowAllOrigins: true,
+		//ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
 	}))
 	router.Use(helmet.Default())
 	router.Use(gzip.Gzip(gzip.BestCompression))
