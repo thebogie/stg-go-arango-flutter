@@ -35,7 +35,6 @@ func (db *DBconnection) CreateConnection() {
 	}
 
 	log.Printf("GO_ENV:%v", os.Getenv("GO_ENV"))
-	log.Printf("URI_PROD:%v", os.Getenv("DATABASE_URI_PROD"))
 
 	conn, err = http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{<-databaseURI},
@@ -55,15 +54,14 @@ func (db *DBconnection) CreateConnection() {
 		logrus.Fatal(err.Error())
 	}
 
-	if os.Getenv("GO_ENV") != "production" {
-		logrus.Info("Connection to Database Successfully")
-	}
 	ctx := context.Background()
 	dbc, err := client.Database(ctx, "smacktalk")
 
 	if err != nil {
 		defer logrus.Info("Connection to smacktalk Failed")
 		logrus.Fatal(err.Error())
+	} else {
+		logrus.Info("Connection to Database Successfully")
 	}
 
 	db.Connect = dbc
@@ -78,16 +76,12 @@ func _Connection() *gorm.DB {
 	} else {
 		databaseURI <- os.Getenv("DATABASE_URI_PROD")
 	}
-
+	logrus.Info("Opening database: %s", databaseURI)
 	db, err := gorm.Open(postgres.Open(<-databaseURI), &gorm.Config{})
 
 	if err != nil {
 		defer logrus.Info("Connection to Database Failed")
 		logrus.Fatal(err.Error())
-	}
-
-	if os.Getenv("GO_ENV") != "production" {
-		logrus.Info("Connection to Database Successfully")
 	}
 
 	err = db.AutoMigrate(
@@ -97,6 +91,10 @@ func _Connection() *gorm.DB {
 
 	if err != nil {
 		logrus.Fatal(err.Error())
+	}
+
+	if os.Getenv("GO_ENV") != "production" {
+		logrus.Info("Connection to Database Successfully")
 	}
 
 	return db

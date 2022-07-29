@@ -1,0 +1,45 @@
+version: "3.5"
+services:
+  backend:
+    # Configuration for building the docker image for the service
+    build:
+      context: ./back # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    depends_on:
+      - arangodb # This service depends on redis. Start that first.
+    env_file:
+      - ./back/.env.prod
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - stg
+
+  frontend:
+    # Configuration for building the docker image for the service
+    build:
+      context: ./front # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    depends_on:
+      - arangodb
+      - backend # This service depends on redis. Start that first.
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - stg
+    command: >
+      bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+
+  arangodb:
+    image: arangodb:latest
+    restart: always
+    ports:
+      - 8529:8529
+    environment:
+      ARANGO_ROOT_PASSWORD: letmein
+    volumes:
+      - /home/thebogie/work/arangodb:/var/lib/arangodb3
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - stg
+
+networks:
+  stg:
