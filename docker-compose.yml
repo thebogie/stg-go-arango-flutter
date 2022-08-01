@@ -37,7 +37,7 @@ services:
     environment:
       ARANGO_ROOT_PASSWORD: letmein
     volumes:
-      - /home/thebogie/work/arangodb:/var/lib/arangodb3
+      - ~/stg/arangodb:/var/lib/arangodb3
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - stg
 
