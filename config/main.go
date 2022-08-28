@@ -162,6 +162,7 @@ func main() {
 
 	conn, err = http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{"http://localhost:8529"},
+		//Endpoints: []string{"http://192.168.86.222:8529"},
 		//Endpoints: []string{"https://5a812333269f.arangodb.cloud:8529/"},
 	})
 

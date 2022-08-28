@@ -38,7 +38,7 @@ func SetupRouter() *gin.Engine {
 	@description Setup Mode Application
 	*/
 
-	log.Printf("ENV ISSUE:%v", util.GodotEnv("GO_ENV"))
+	log.Printf("GO_ENV:%v", util.GodotEnv("GO_ENV"))
 
 	if util.GodotEnv("GO_ENV") != "production" && util.GodotEnv("GO_ENV") != "test" {
 		gin.SetMode(gin.DebugMode)

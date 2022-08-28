@@ -34,7 +34,7 @@ func (db *DBconnection) CreateConnection() {
 		databaseURI <- os.Getenv("DATABASE_URI_PROD")
 	}
 
-	log.Printf("GO_ENV:%v", os.Getenv("GO_ENV"))
+	log.Printf("DB CONNECTION GO_ENV SETTING:%v:::DB URI:%v", os.Getenv("GO_ENV"), util.GodotEnv("DATABASE_URI_DEV"))
 
 	conn, err = http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{<-databaseURI},
@@ -51,7 +51,7 @@ func (db *DBconnection) CreateConnection() {
 
 	if err != nil {
 		defer logrus.Info("Connection to Database Failed")
-		logrus.Fatal(err.Error())
+		logrus.Fatal("client connection failed: %v", err.Error())
 	}
 
 	ctx := context.Background()
@@ -59,7 +59,7 @@ func (db *DBconnection) CreateConnection() {
 
 	if err != nil {
 		defer logrus.Info("Connection to smacktalk Failed")
-		logrus.Fatal(err.Error())
+		logrus.Fatal("Cant reach smacktalk %v", err.Error())
 	} else {
 		logrus.Info("Connection to Database Successfully")
 	}

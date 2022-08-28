@@ -13,6 +13,7 @@ func GodotEnv(key string) string {
 		godotenv.Load(".env")
 		env <- os.Getenv(key)
 	} else {
+		godotenv.Load(".env.prod")
 		env <- os.Getenv(key)
 	}
 

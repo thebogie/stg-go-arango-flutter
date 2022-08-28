@@ -7,10 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4000:4000" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    environment:
+      GO_ENV: ${GO_ENV}
     depends_on:
-      - arangodb # This service depends on redis. Start that first.
-    env_file:
-      - ./back/.env.prod
+      - arangodb
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - stg
 
@@ -21,13 +21,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4200:4200" # Forward the exposed port 8080 on the container to port 8080 on the host machine
-    depends_on:
-      - arangodb
-      - backend # This service depends on redis. Start that first.
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - stg
     command: >
-      bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+      ${ANG_START}
 
   arangodb:
     image: arangodb:latest
