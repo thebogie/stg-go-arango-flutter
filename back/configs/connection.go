@@ -38,11 +38,12 @@ func (db *DBconnection) CreateConnection() {
 
 	conn, err = http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{<-databaseURI},
-		//Endpoints: []string{"https://5a812333269f.arangodb.cloud:8529/"},
 	})
+
 	if err != nil {
 		log.Fatalf("Failed to create HTTP connection: %v", err)
 	}
+
 	client, err := driver.NewClient(driver.ClientConfig{
 		Connection:     conn,
 		Authentication: driver.BasicAuthentication("root", "letmein"),
@@ -50,16 +51,50 @@ func (db *DBconnection) CreateConnection() {
 	})
 
 	if err != nil {
-		defer logrus.Info("Connection to Database Failed")
-		logrus.Fatal("client connection failed: %v", err.Error())
+		defer logrus.Info("Connection to Arango instance Failed")
+		logrus.Fatal("Arango Instance not reachable", err.Error())
 	}
 
 	ctx := context.Background()
+
+	log.Printf("***ENDPOINTS:", client.Connection().Endpoints())
+	client.Connection().SetAuthentication(driver.BasicAuthentication("root", "letmein"))
+
+	what, err := client.DatabaseExists(ctx, "smacktalk")
+	if err != nil {
+		log.Printf("EXISTS ERROR:", err.Error())
+	} else {
+
+		log.Printf("WHAT:", what)
+	}
+
+	huh, err := client.Databases(ctx)
+	if err != nil {
+		log.Printf("ERROR:", err.Error())
+	} else {
+
+		log.Printf("huh:", huh)
+	}
+
+	users, err := client.Users(ctx)
+	if err != nil {
+		log.Printf("ERROR:", err.Error())
+	} else {
+
+		log.Printf("users:", users)
+	}
+	dbca, err := client.Databases(ctx)
+	if err != nil {
+		log.Printf("DBS ERROR:", err.Error())
+	} else {
+		log.Printf("DBS:", dbca)
+	}
+
 	dbc, err := client.Database(ctx, "smacktalk")
 
 	if err != nil {
 		defer logrus.Info("Connection to smacktalk Failed")
-		logrus.Fatal("Cant reach smacktalk %v", err.Error())
+		logrus.Fatal("Smacktalk database not reachable", err.Error())
 	} else {
 		logrus.Info("Connection to Database Successfully")
 	}

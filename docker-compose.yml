@@ -9,8 +9,8 @@ services:
       - "4000:4000" # Forward the exposed port 8080 on the container to port 8080 on the host machine
     environment:
       GO_ENV: ${GO_ENV}
-    depends_on:
-      - arangodb
+    #depends_on:
+    #  - arangodb
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - stg
 

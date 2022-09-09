@@ -32,7 +32,7 @@ goinstall:
 	${GO} get .
 
 godev:
-	${GIN} -a 4000 -p 3001 -b bin/main run main.go
+	${GIN} -a 4000 -p 4000 -b bin/main run main.go
 
 goprod:
 	${GO} build -o main .
