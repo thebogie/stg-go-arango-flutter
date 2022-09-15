@@ -1,5 +1,5 @@
 
-
+#stage 1
 FROM golang:latest as build-go
 WORKDIR /stg/back
 COPY ./back/ .
@@ -21,6 +21,13 @@ RUN apt-get clean \
 
 RUN make goprod
 
+#stage 2
+FROM node:latest as node
+WORKDIR /app
+COPY  ./front .
+RUN npm install
+RUN npm run build --prod
+
 
 
 
@@ -40,7 +47,7 @@ ENV ARANGO_SIGNATURE_URL ${ARANGO_PACKAGE_URL}.asc
 #   https://www.arangodb.com/docs/3.9/programs-arangod-server.html#managing-endpoints
 #   https://www.arangodb.com/docs/3.9/programs-arangod-log.html
 
-RUN apk add --no-cache gnupg pwgen binutils numactl numactl-tools nodejs yarn && \
+RUN apk add --no-cache npm gnupg pwgen binutils numactl numactl-tools nodejs yarn nginx curl && \
     yarn global add foxx-cli@2.0.1 && \
     apk del yarn && \
     gpg --batch --keyserver keys.openpgp.org --recv-keys CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B && \
@@ -67,16 +74,19 @@ RUN apk add --no-cache gnupg pwgen binutils numactl numactl-tools nodejs yarn &&
 
 ENV GLIBCXX_FORCE_NEW=1
 
-# retain the database directory and the Foxx Application directory
-VOLUME ["/var/lib/arangodb3", "/var/lib/arangodb3-apps"]
 
+#Aragnod DB
+VOLUME ["/var/lib/arangodb3", "/var/lib/arangodb3-apps"]
 COPY docker/arangodb/docker-entrypoint.sh /entrypoint.sh
 COPY docker/arangodb/docker-foxx.sh /usr/bin/foxx
 
-#ENTRYPOINT ["/entrypoint.sh"]
-
-
+#backend
 COPY --from=build-go /stg/back /stg/back
+
+
+# Frontend
+COPY --from=node /app/dist/Angular13JwtAuth /usr/share/nginx/html
+COPY docker/nginx/nginx.conf /etc/nginx/
 
 WORKDIR /
 COPY ./docker/launch.sh .
@@ -92,6 +102,8 @@ ENTRYPOINT ["tail", "-f", "/dev/null"]
 #CMD ["arangod"]
 
 
+
+#ENTRYPOINT ["/entrypoint.sh"]
 
 
 # Use the official Debian slim image for a lean production container.
