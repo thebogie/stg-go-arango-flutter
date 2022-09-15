@@ -1,11 +1,17 @@
 
 ###
 
-full stack web application (backend and frontend) using Rust. (based from https://github.com/zupzup/rust-fullstack-example)
+full stack web application 
+frontend = angular 13
+backend = go
+database = arango
 
 
-Arango: https://aragog.rs/ 
-# docker run -v /home/thebogie/work/arangodb:/data -p 8529:8529 -e ARANGO_ROOT_PASSWORD=letmein -d --name arangodb arangodb
+## docker setup
+docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001 -p 50002:50002 -p 50003:50003 -d --name stgangdocker stgangdocker 
+
+arangod  --server.authentication=false
+cd /stg/back ; ./main
 
 ## Backend
 
