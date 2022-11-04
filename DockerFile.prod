@@ -17,7 +17,7 @@ RUN apt-get update \
     build-essential
 
 RUN apt-get clean \
-    && apt-get remove   
+    && apt-get remove
 
 RUN make goprod
 
@@ -48,7 +48,7 @@ ENV ARANGO_SIGNATURE_URL ${ARANGO_PACKAGE_URL}.asc
 #   https://www.arangodb.com/docs/3.9/programs-arangod-server.html#managing-endpoints
 #   https://www.arangodb.com/docs/3.9/programs-arangod-log.html
 
-RUN apk add --no-cache openrc npm gnupg pwgen binutils numactl numactl-tools nodejs yarn nginx curl && \
+RUN apk add --no-cache npm gnupg pwgen binutils numactl numactl-tools nodejs yarn nginx curl && \
     yarn global add foxx-cli@2.0.1 && \
     apk del yarn && \
     gpg --batch --keyserver keys.openpgp.org --recv-keys CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B && \
@@ -63,7 +63,7 @@ RUN apk add --no-cache openrc npm gnupg pwgen binutils numactl numactl-tools nod
     -e 's!127\.0\.0\.1!0.0.0.0!g' \
     -e 's!8529!50001!g' \
     -e 's!^(file\s*=\s*).*!\1 -!' \
-    -e 's!^\s*uid\s*=.*!!' \ 
+    -e 's!^\s*uid\s*=.*!!' \
     /etc/arangodb3/arangod.conf        && \
     chgrp -R 0 /var/lib/arangodb3 /var/lib/arangodb3-apps && \
     chmod -R 775 /var/lib/arangodb3 /var/lib/arangodb3-apps && \
@@ -86,8 +86,8 @@ COPY --from=build-go /stg/back /stg/back
 
 
 # Frontend
-#COPY --from=node /app/dist/Angular13JwtAuth /usr/share/nginx/html
-#COPY docker/nginx/nginx.conf /etc/nginx/
+COPY --from=node /app/dist/Angular13JwtAuth /usr/share/nginx/html
+COPY docker/nginx/nginx.conf /etc/nginx/
 
 WORKDIR /
 COPY ./docker/launch.sh .
