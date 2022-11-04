@@ -7,19 +7,23 @@ backend = go
 database = arango
 
 
-## docker setup
+## docker setup for all
 docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001 -p 50002:50002 -p 50003:50003 -d --name stgangdocker stgangdocker 
 
-without frontend:
-docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001 -p 50002:50002 --name stgangdocker stgangdocker 
-
+In Docker:
 arangod  --server.authentication=false ; 
 cd /stg/back ; ./main
-nginx
 
-arangod  --server.authentication=false  & 
-cd /stg/back ; ./main &
-nginx 
+## docker setup for back+db
+docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001 -p 50002:50002 --name stgangdocker stgangdocker 
+
+In Docker:
+arangod  --server.authentication=false
+## just database:
+docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001  --name stgangdocker stgangdocker 
+
+arangod  --server.authentication=false ; 
+
 
 ## Backend
 
