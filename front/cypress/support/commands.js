@@ -10,17 +10,51 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+// Cypress.Commands.add("login", (email, password) => { ... })
 //
 //
 // -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //
 // -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
+// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
 //
 //
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import '@testing-library/cypress/add-commands'
+// -- This is will overwrite an existing command --
+// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+// for adding cy.percySnapshot() command. https://docs.percy.io/docs/cypress
+import '@percy/cypress'
+
+const COMMAND_DELAY = 0
+
+for (const command of [
+  'visit',
+  'click',
+  'trigger',
+  'type',
+  'clear',
+  'reload',
+  'contains',
+]) {
+  Cypress.Commands.overwrite(command, (originalFn, ...args) => {
+    const origVal = originalFn(...args)
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(origVal)
+      }, COMMAND_DELAY)
+    })
+  })
+}
+
+Cypress.Commands.add('submitTripleTodos', () => {
+  cy.visit('http://localhost:50003/')
+  cy.get('[data-cy=new-todo-input-text]')
+    .type('one')
+    .type('{enter}')
+    .type('two')
+    .type('{enter}')
+    .type('three')
+    .type('{enter}')
+})
