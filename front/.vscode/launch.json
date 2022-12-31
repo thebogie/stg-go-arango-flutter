@@ -5,11 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Edge",
+      "name": "smacktalkgaming-website",
       "request": "launch",
-      "type": "msedge",
-      "url": "http://localhost:50003",
-      "webRoot": "${workspaceFolder}/src"
+      "type": "dart"
+    },
+    {
+      "name": "smacktalkgaming-website (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "smacktalkgaming-website (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
     }
   ]
 }

@@ -1,7 +1,0 @@
-{
-  "extends": "typescript-react-pro",
-  "plugins": ["cypress"],
-  "env": {
-    "cypress/globals": true
-  }
-}
