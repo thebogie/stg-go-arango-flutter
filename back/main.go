@@ -51,7 +51,8 @@ func SetupRouter() *gin.Engine {
 	@description Setup Middleware
 	*/
 	router.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"https://smacktalkgaming.com", "http://localhost:50003", "http://127.0.0.1:50000"},
+		//AllowOrigins: []string{"https://smacktalkgaming.com", "http://localhost:50003", "http://localhost:50000", "http://localhost:50002"},
+		AllowOrigins: []string{"*"},
 		AllowMethods: []string{"PUT", "POST", "GET", "OPTIONS", "DELETE"},
 		AllowHeaders: []string{"Origin", "Content-Type", "Authorization"},
 		//AllowAllOrigins: true,

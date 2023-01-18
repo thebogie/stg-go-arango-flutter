@@ -1,19 +1,5 @@
 part of '../login_page.dart';
 
-final _getConnect = GetConnect();
-void _sendPostRequest(String email, String password) async {
-  print("email:" + email);
-  final response = await _getConnect.post(
-    'http://localhost:50002/api/v1/login',
-    {
-      'Email': email,
-      'Password': password,
-    },
-  );
-
-  print(response.body);
-}
-
 class _LoginSignIn extends StatefulWidget {
   const _LoginSignIn({
     Key? key,
@@ -113,7 +99,7 @@ class __LoginSignInState extends State<_LoginSignIn> {
             });
             if (_formKey.currentState?.validate() ?? false) {
               context.replaceRoute(const ProjectsRoute());
-              _sendPostRequest("mitch@gmail.com", "letmein");
+              ApiService().getUser('mitch@gmail.com', 'letmein');
             }
           },
           decoration: AppDecorations.button.primary(),
