@@ -2,7 +2,7 @@
 ###
 
 full stack web application 
-frontend = angular 13
+frontend = flutter
 backend = go
 database = arango
 
@@ -18,7 +18,8 @@ cd /stg/back ; ./main
 docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001 -p 50002:50002 --name stgangdocker stgangdocker 
 
 In Docker:
-arangod  --server.authentication=false
+arangod  --server.authentication=false &
+cd /stg/back ; ./main
 ## just database:
 docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001  --name stgangdocker stgangdocker 
 

@@ -15,9 +15,9 @@ POST http://127.0.0.1:50002/api/v1/login HTTP/1.1
 content-type: application/json
 
 {
-    "user" : 
-    { "Email": "mitch@gmail.com",
-    "Password": "letmein" }
+    
+    "Email": "mitch@gmail.com",
+    "Password": "letmein" 
 }
 
 

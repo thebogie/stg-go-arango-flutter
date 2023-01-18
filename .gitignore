@@ -19,3 +19,5 @@ front/.netlify
 front/.svelte-kit.old
 #front/.svelte-kit
 
+front/.dart_tool/*
+front/build
