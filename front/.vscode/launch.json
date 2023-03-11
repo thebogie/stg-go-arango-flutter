@@ -7,7 +7,8 @@
     {
       "name": "smacktalkgaming-website",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "deviceId": "chrome"
     },
     {
       "name": "smacktalkgaming-website (profile mode)",

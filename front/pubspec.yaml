@@ -1,55 +1,36 @@
-name: admin
-description: Shop web admin panel.
-publish_to: 'none' 
-
+name: flutter_login
+description: A new Flutter project.
 version: 1.0.0+1
+publish_to: none
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: ">=2.19.0"
 
 dependencies:
-  auto_route: ^4.0.1
-  bloc: ^8.0.3
-  cupertino_icons: ^1.0.2
+  authentication_repository:
+    path: packages/authentication_repository
+  bloc: ^8.1.0
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
-  flutter_staggered_animations: ^1.0.0
-  flutter_staggered_grid_view: ^0.6.1
-  flutter_svg: ^1.0.3
-  freezed_annotation: ^2.0.3
-  get: ^4.6.5
-  get_it: ^7.2.0  
-  http: ^0.13.5
-  injectable: ^1.5.3
-  intl: ^0.17.0
-  json_annotation: ^4.4.0
-  lottie: ^1.3.0
-  
+  flutter_bloc: ^8.1.1
+  formz: ^0.4.0
+  user_repository:
+    path: packages/user_repository
+
+dependency_overrides:
+#  bloc:
+ #   path: ../../packages/bloc
+ #flutter_bloc:
+  #  path: ../../packages/flutter_bloc
 
 dev_dependencies:
-  auto_route_generator: ^4.0.0
-  build_runner: ^2.1.8
-  flutter_lints: ^2.0.1
+ # bloc_test:
+  #  path: ../../packages/bloc_test
   flutter_test:
     sdk: flutter
-  freezed: ^2.0.3+1
-  injectable_generator: ^1.5.3
-  json_serializable: ^6.1.5
+  mocktail: ^0.3.0
+  very_good_analysis: ^3.1.0
 
 flutter:
   uses-material-design: true
-  assets: 
-    - assets/lottie/
-    - assets/svgs/
-  fonts:
-    - family: Ubuntu
-      fonts:
-        - asset: assets/fonts/Ubuntu-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Ubuntu-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Ubuntu-Medium.ttf          
-          weight: 500
-        - asset: assets/fonts/Ubuntu-Bold.ttf
-          weight: 700
