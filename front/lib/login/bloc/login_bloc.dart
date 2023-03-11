@@ -4,6 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_login/login/login.dart';
 import 'package:formz/formz.dart';
 
+import '../../utils/api_service.dart';
+
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -51,7 +53,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
+
       try {
+        await ApiService().getUser(state.username.value, state.password.value);
         await _authenticationRepository.logIn(
           username: state.username.value,
           password: state.password.value,

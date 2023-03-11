@@ -15,17 +15,20 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.1
   formz: ^0.4.0
+  get: ^4.6.5
+  get_it: ^7.2.0
+  http: ^0.13.5
   user_repository:
     path: packages/user_repository
 
 dependency_overrides:
 #  bloc:
- #   path: ../../packages/bloc
- #flutter_bloc:
-  #  path: ../../packages/flutter_bloc
+#   path: ../../packages/bloc
+#flutter_bloc:
+#  path: ../../packages/flutter_bloc
 
 dev_dependencies:
- # bloc_test:
+  # bloc_test:
   #  path: ../../packages/bloc_test
   flutter_test:
     sdk: flutter

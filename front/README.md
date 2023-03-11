@@ -1,5 +1,8 @@
 # flutter_login
 https://github.com/felangel/Bloc/tree/master/examples/flutter_login
+https://bloclibrary.dev/#/flutterlogintutorial
+https://flutterguide.com/flutter-bloc-a-complete-guide/
+
 A new Flutter project.
 
 ## Getting Started
