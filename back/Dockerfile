@@ -29,5 +29,5 @@ RUN apt-get update \
   build-essential
 COPY --from=builder . ./usr/src/app
 RUN make goprod
-EXPOSE 4000
+EXPOSE 50002
 CMD ["./main"]

@@ -6,6 +6,9 @@ frontend = flutter
 backend = go
 database = arango
 
+## docker-compose
+
+
 
 ## docker setup for all
 docker run -v /home/thebogie/work/arangodb/collection:/var/lib/arangodb3 -v /home/thebogie/work/arangodb/apps:/var/lib/arangodb3-apps  -p 50001:50001 -p 50002:50002 -p 50003:50003 -d --name stgangdocker stgangdocker 

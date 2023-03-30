@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"os"
+	"time"
 
 	model "back/models"
 	util "back/utils"
@@ -36,37 +37,49 @@ func (db *DBconnection) CreateConnection() {
 
 	log.Printf("DB CONNECTION GO_ENV SETTING:%v:::DB URI:%v", os.Getenv("GO_ENV"), util.GodotEnv("DATABASE_URI_DEV"))
 
+	var uptime = 10
+	var client driver.Client
+
 	conn, err = http.NewConnection(http.ConnectionConfig{
 		Endpoints: []string{<-databaseURI},
 	})
 
 	if err != nil {
-		log.Fatalf("Failed to create HTTP connection: %v", err)
+		logrus.Fatal("Creation of connection string to failed", err.Error())
 	}
 
-	client, err := driver.NewClient(driver.ClientConfig{
+	client, err = driver.NewClient(driver.ClientConfig{
 		Connection:     conn,
 		Authentication: driver.BasicAuthentication("root", "letmein"),
 		//Authentication: driver.BasicAuthentication("root", "wnbGnPpCXHwbP"),
 	})
-
 	if err != nil {
-		defer logrus.Info("Connection to Arango instance Failed")
-		logrus.Fatal("Arango Instance not reachable", err.Error())
+		logrus.Fatal("Creation of NewClient failed", err.Error())
+	}
+
+	client.Connection().SetAuthentication(driver.BasicAuthentication("root", "letmein"))
+
+	for i := 0; i < uptime; i++ {
+		log.Printf("Attempting arangodb connection to smacktalk db")
+		time.Sleep(5 * time.Second)
+
+		ctx := context.Background()
+		what, err := client.DatabaseExists(ctx, "smacktalk")
+		if err != nil {
+			logrus.Info("Try again. Smacktalk DB isnt found:   ", err.Error())
+
+			if i == uptime {
+				logrus.Fatal("Smacktalk DB isnt found after x times", err.Error())
+			}
+		} else {
+			logrus.Info("Found smacktalk:", what)
+			//worked
+			i = 10
+		}
+
 	}
 
 	ctx := context.Background()
-
-	log.Printf("***ENDPOINTS:", client.Connection().Endpoints())
-	client.Connection().SetAuthentication(driver.BasicAuthentication("root", "letmein"))
-
-	what, err := client.DatabaseExists(ctx, "smacktalk")
-	if err != nil {
-		log.Printf("EXISTS ERROR:", err.Error())
-	} else {
-
-		log.Printf("WHAT:", what)
-	}
 
 	huh, err := client.Databases(ctx)
 	if err != nil {

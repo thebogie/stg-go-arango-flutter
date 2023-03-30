@@ -6,6 +6,7 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
 	"time"
@@ -367,30 +368,37 @@ func main() {
 
 	//log.Println("GAMES: %v", games)
 	gamesJSON, _ := json.Marshal(games.GameList)
+	log.Println("Creating games")
 	err = ioutil.WriteFile("stg_games.json", gamesJSON, 0777)
 
 	//log.Println("VENUES: %v", venues.VenueList)
 	venuesJSON, _ := json.Marshal(venues.VenueList)
+	log.Println("Creating venues")
 	err = ioutil.WriteFile("stg_venues.json", venuesJSON, 0777)
 
 	//log.Println("PLAYERS: %v", players)
 	playersJSON, _ := json.Marshal(finalplayers)
+	log.Println("Creating players")
 	err = ioutil.WriteFile("stg_players.json", playersJSON, 0777)
 
 	//log.Println("FINAL: %v", finalcontests)
 	contestJSON, _ := json.Marshal(finalcontests)
+	log.Println("Creating contests")
 	err = ioutil.WriteFile("stg_contests.json", contestJSON, 0777)
 
 	//log.Println("PLAYEDAT: %v", playedats)
 	playedatJSON, _ := json.Marshal(playedats)
+	log.Println("Creating played at")
 	err = ioutil.WriteFile("stg_playedat.json", playedatJSON, 0777)
 
 	//log.Println("PLAYEWITH: %v", playwiths)
 	playedwithJSON, _ := json.Marshal(playedwiths)
+	log.Println("Creating played with")
 	err = ioutil.WriteFile("stg_playedwith.json", playedwithJSON, 0777)
 
 	//log.Println("RESULTEDIN: %v", resultedins)
 	resultedinJSON, _ := json.Marshal(resultedins)
+	log.Println("Creating resulted in")
 	err = ioutil.WriteFile("stg_resultedin.json", resultedinJSON, 0777)
 
 	//load it all into arango
@@ -407,6 +415,7 @@ func main() {
 
 func gettimestamp() string {
 
+	time.Sleep(time.Duration(rand.Intn(100-10)+10) * time.Nanosecond)
 	retval := strings.Replace((time.Now().Format(time.RFC3339Nano)), ":", "", -1)
 	retval = strings.Replace(retval, "-", "", -1)
 	retval = strings.Replace(retval, ".", "", -1)

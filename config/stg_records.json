@@ -6510,7 +6510,7 @@
       "lng": "-97.802128"
     },
     "games": [
-      "Ticket to Ride Map Collection: Volume 2 India & Switzerland"
+      "Ticket to Ride Map Collection: Volume 2 – India & Switzerland"
     ],
     "outcome": [
       {
@@ -16975,6 +16975,1038 @@
         "_key": "key",
         "playerid": "joanna",
         "place": "2",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-14T13:15:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-14T17:54:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Inis"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "jd",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "curley",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-14T18:15:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-15T00:16:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Tapestry"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "curley",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "jd",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-15T12:15:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-15T14:47:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Architects of the West Kingdom"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "curley",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "jd",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-20T20:15:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-21T01:39:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "https://tabletopia.com",
+      "lat": "",
+      "lng": ""
+    },
+    "games": [
+      "Architects of the West Kingdom"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "gary",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "curley",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "fred",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-28T22:15:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-28T03:03:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "https://tabletopia.com",
+      "lat": "",
+      "lng": ""
+    },
+    "games": [
+      "Tapestry"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "curley",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "fred",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "gary",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-30T18:04:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-30T19:30:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Catan"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-03-30T19:34:00",
+    "startoffset": "-05:00",
+    "stop": "2020-03-30T20:52:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Sushi Go Party!"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-04-04T12:00:00",
+    "startoffset": "-05:00",
+    "stop": "2020-04-04T13:36:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Mille Bornes"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "ray",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-04-06T18:30:00",
+    "startoffset": "-05:00",
+    "stop": "2020-04-06T19:01:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Sushi Roll"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-04-10T18:30:00",
+    "startoffset": "-05:00",
+    "stop": "2020-04-10T22:30:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "https://tabletopia.com",
+      "lat": "",
+      "lng": ""
+    },
+    "games": [
+      "Keyflower"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "gary",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "curley",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "fred",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "4",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-04-10T18:30:00",
+    "startoffset": "-05:00",
+    "stop": "2020-04-10T22:30:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Timeline Challenge"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-05-02T13:00:00",
+    "startoffset": "-05:00",
+    "stop": "2020-05-02T14:00:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Suspicion (2016)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-05-02T14:00:00",
+    "startoffset": "-05:00",
+    "stop": "2020-05-02T15:43:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Cosmic Encounter (2008)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-05-04T18:30:00",
+    "startoffset": "-05:00",
+    "stop": "2020-05-04T20:01:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Cosmic Encounter (2008)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-06-26T20:01:00",
+    "startoffset": "-05:00",
+    "stop": "2020-06-26T21:59:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Takenoko"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-07-17T20:00:00",
+    "startoffset": "-05:00",
+    "stop": "2020-07-17T22:00:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "Emerald Tavern Games and Cafe, Research Boulevard, Austin, TX, United States",
+      "lat": "30.371085",
+      "lng": "-97.724703"
+    },
+    "games": [
+      "Railroad Ink: Deep Blue Edition"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-08-20T20:01:00",
+    "startoffset": "-05:00",
+    "stop": "2020-08-20T22:19:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Carcassonne"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-08-31T19:01:00",
+    "startoffset": "-05:00",
+    "stop": "2020-08-31T20:16:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "7 Wonders (2010)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-08-31T20:20:00",
+    "startoffset": "-05:00",
+    "stop": "2020-08-31T21:16:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "7 Wonders (2010)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "4",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-09-03T22:20:00",
+    "startoffset": "-05:00",
+    "stop": "2020-09-04T00:50:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "7 Wonders (2010)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "ava",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-09-04T00:51:00",
+    "startoffset": "-05:00",
+    "stop": "2020-09-04T01:21:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Quicksand (2003)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "ava",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-09-04T01:22:00",
+    "startoffset": "-05:00",
+    "stop": "2020-09-04T01:45:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Quicksand (2003)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "ava",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-09-13T22:22:00",
+    "startoffset": "-05:00",
+    "stop": "2020-09-14T00:12:00",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Caesar & Cleopatra (1997)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "2",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-09-28T18:02:00",
+    "startoffset": "-05:00",
+    "stop": "2020-09-28T00:19:41",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Survive: Escape from Atlantis! (2010)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "kendra",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "3",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-10-02T20:02:00",
+    "startoffset": "-05:00",
+    "stop": "2020-10-02T21:33:33",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Kingdom Builder (2011)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "lily",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "olivia",
+        "place": "3",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "4",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "jd",
+        "place": "5",
+        "result": "lost"
+      }
+    ]
+  },
+  {
+    "_key": "key",
+    "start": "2020-10-02T21:40:00",
+    "startoffset": "-05:00",
+    "stop": "2020-10-02T00:22:43",
+    "stopoffset": "-05:00",
+    "venue": {
+      "_key": "key",
+      "address": "2613 W 10th St, Austin, TX, United States",
+      "lat": "30.284886",
+      "lng": "-97.774528"
+    },
+    "games": [
+      "Kingdom Builder (2011)"
+    ],
+    "outcome": [
+      {
+        "_key": "key",
+        "playerid": "jed",
+        "place": "1",
+        "result": "won"
+      },
+      {
+        "_key": "key",
+        "playerid": "mitch",
+        "place": "2",
+        "result": "lost"
+      },
+      {
+        "_key": "key",
+        "playerid": "joanna",
+        "place": "3",
         "result": "lost"
       }
     ]

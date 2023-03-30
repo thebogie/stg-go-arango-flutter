@@ -21,3 +21,4 @@ front/.svelte-kit.old
 
 front/.dart_tool/*
 front/build
+front/linux/flutter/generated*
