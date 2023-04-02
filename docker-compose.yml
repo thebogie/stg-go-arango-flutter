@@ -22,9 +22,8 @@ services:
     ports:
       - "50002:50002" # Forward the exposed port 8080 on the container to port 8080 on the host machine
     environment:
-      GO_ENV: ${GO_ENV}
-      DATABASE_URI_DEV: "http://arangodb:8529"
-      DATABASE_URI_PROD: "http://arangodb:8529"
+      GO_ENV: prod
+
     depends_on:
       - arangodb
     networks:
