@@ -6,15 +6,12 @@ import (
 	"os"
 	"time"
 
-	model "back/models"
 	util "back/utils"
 
 	driver "github.com/arangodb/go-driver"
 
 	"github.com/arangodb/go-driver/http"
 	"github.com/sirupsen/logrus"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
 
 type DBconnection struct {
@@ -29,13 +26,9 @@ func (db *DBconnection) CreateConnection() {
 
 	databaseURI := make(chan string, 1)
 
-	if os.Getenv("GO_ENV") != "production" {
-		databaseURI <- util.GodotEnv("DATABASE_URI_DEV")
-	} else {
-		databaseURI <- os.Getenv("DATABASE_URI_PROD")
-	}
+	databaseURI <- util.GodotEnv("DATABASE_URI")
 
-	log.Printf("DB CONNECTION GO_ENV SETTING:%v:::DB URI:%v", os.Getenv("GO_ENV"), util.GodotEnv("DATABASE_URI_DEV"))
+	log.Printf("DB CONNECTION GO_ENV SETTING:%v:::DB URI:%v", os.Getenv("GO_ENV"), util.GodotEnv("DATABASE_URI"))
 
 	var uptime = 10
 	var client driver.Client
@@ -114,36 +107,4 @@ func (db *DBconnection) CreateConnection() {
 
 	db.Connect = dbc
 
-}
-
-func _Connection() *gorm.DB {
-	databaseURI := make(chan string, 1)
-
-	if os.Getenv("GO_ENV") != "production" {
-		databaseURI <- util.GodotEnv("DATABASE_URI_DEV")
-	} else {
-		databaseURI <- os.Getenv("DATABASE_URI_PROD")
-	}
-	logrus.Info("Opening database: %s", databaseURI)
-	db, err := gorm.Open(postgres.Open(<-databaseURI), &gorm.Config{})
-
-	if err != nil {
-		defer logrus.Info("Connection to Database Failed")
-		logrus.Fatal(err.Error())
-	}
-
-	err = db.AutoMigrate(
-		&model.EntityUsers{},
-		&model.EntityStudent{},
-	)
-
-	if err != nil {
-		logrus.Fatal(err.Error())
-	}
-
-	if os.Getenv("GO_ENV") != "production" {
-		logrus.Info("Connection to Database Successfully")
-	}
-
-	return db
 }

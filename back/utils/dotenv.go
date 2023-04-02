@@ -1,6 +1,7 @@
 package util
 
 import (
+	"log"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -8,20 +9,14 @@ import (
 
 func GodotEnv(key string) string {
 
-	os.Setenv("GO_ENV", "test")
-
-	argLength := len(os.Args[1:])
-	if argLength != 0 && os.Args[1] == "prod" {
-		os.Setenv("GO_ENV", "production")
-	}
-
 	env := make(chan string, 1)
 
-	if os.Getenv("GO_ENV") != "production" {
-		godotenv.Load(".env")
+	log.Printf("Starting up env: %v", os.Getenv("GO_ENV"))
+	if os.Getenv("GO_ENV") == "prod" {
+		godotenv.Load(".env.prod")
 		env <- os.Getenv(key)
 	} else {
-		godotenv.Load(".env.prod")
+		godotenv.Load(".env.dev")
 		env <- os.Getenv(key)
 	}
 

@@ -40,12 +40,12 @@ func SetupRouter() *gin.Engine {
 
 	log.Printf("GO_ENV:%v", util.GodotEnv("GO_ENV"))
 
-	if util.GodotEnv("GO_ENV") != "production" && util.GodotEnv("GO_ENV") != "test" {
-		gin.SetMode(gin.DebugMode)
-	} else if util.GodotEnv("GO_ENV") == "test" {
-		gin.SetMode(gin.TestMode)
-	} else {
+	if util.GodotEnv("GO_ENV") == "prod" {
 		gin.SetMode(gin.ReleaseMode)
+		//} else if util.GodotEnv("GO_ENV") == "test" {
+		//	gin.SetMode(gin.TestMode)
+	} else {
+		gin.SetMode(gin.DebugMode)
 	}
 	/**
 	@description Setup Middleware

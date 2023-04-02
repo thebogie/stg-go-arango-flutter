@@ -20,4 +20,14 @@ content-type: application/json
     "Password": "letmein" 
 }
 
+###
+POST https://smacktalkgaming.com/api/v1/login HTTP/1.1
+content-type: application/json
+
+{
+    
+    "Email": "mitch@gmail.com",
+    "Password": "letmein" 
+}
+
 
