@@ -27,9 +27,6 @@ func main() {
 
 func SetupRouter() *gin.Engine {
 
-	dbc := config.DBconnection{}
-	dbc.CreateConnection()
-
 	/**
 	@description Init Router
 	*/
@@ -47,6 +44,9 @@ func SetupRouter() *gin.Engine {
 	} else {
 		gin.SetMode(gin.DebugMode)
 	}
+
+	dbc := config.DBconnection{}
+	dbc.CreateConnection()
 	/**
 	@description Setup Middleware
 	*/
