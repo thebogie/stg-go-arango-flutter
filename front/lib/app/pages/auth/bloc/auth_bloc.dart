@@ -14,7 +14,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignIn>((event, emit) async {
       emit(AuthLoading());
       try {
-        final response = await _authService.performLogin();
+        var response = await _authService.performLogin();
         if (response.isLoggedIn) {
           emit(Authenticated());
         } else {

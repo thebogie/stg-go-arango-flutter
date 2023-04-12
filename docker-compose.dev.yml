@@ -8,7 +8,7 @@ services:
     environment:
       ARANGO_ROOT_PASSWORD: letmein
     volumes:
-      - /home/smacktalk/stg/arangodbstorage:/var/lib/arangodb3
+      - C:/stg/arangodbstorage:/var/lib/arangodb3
     networks:
       # Networks to join (Services on the same network can communicate with each other using their name)
       - stg
@@ -22,7 +22,8 @@ services:
     ports:
       - "50002:50002" # Forward the exposed port 8080 on the container to port 8080 on the host machine
     environment:
-      GO_ENV: prod
+      ENVTORUN: dev
+    
 
     depends_on:
       - arangodb
@@ -43,11 +44,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "50003:80" # Forward the exposed port 8080 on the container to port 8080 on the host machine
-    
     environment:
-      ENVTORUN: prod
-      API_HOST: https://smacktalkgaming:50002/api/v1
-    
+      ENVTORUN: dev
+      API_HOST: http://localhost:50002/api/v1
+
     networks:
       # Networks to join (Services on the same network can communicate with each other using their name)
       - stg

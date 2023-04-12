@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:deep_pick/deep_pick.dart';
 import 'package:dio/dio.dart';
 import 'package:smacktalkgaming/app/models/user/index.dart';
 import 'package:smacktalkgaming/app/services/api/interface/api_interface.dart'
@@ -18,5 +21,35 @@ class ApiService implements ApiInterface {
       print("E: ${e.toString()}");
     }
     return Future(() => User(email: "test@gmail.com", isLoggedIn: true));
+  }
+
+  @override
+  Future<User> loginUser(String email, String password) async {
+    Map<String, dynamic> map = Map<String, dynamic>();
+
+    try {
+      print("Hitting: ${Config.apiHost}/login");
+      final response = await dio.post('${Config.apiHost}/login',
+          data: {'Email': email, 'Password': password},
+          options: Options(
+            responseType: ResponseType.plain,
+          ));
+
+      print("Got: ${response.data.toString()}");
+      final json = jsonDecode(response.data)['data'];
+      final String? accesstoken = pick(json, 'accessToken').asStringOrNull();
+
+      map = {
+        "accesstoken": pick(json, 'accessToken').asStringOrNull(),
+        "email": pick(json, 'Email').asStringOrNull(),
+        "password": pick(json, 'Password').asStringOrNull(),
+        "isLoggedIn": false
+      };
+
+      User.fromJson(map);
+    } catch (e) {
+      print("E: ${e.toString()}");
+    }
+    return Future(() => User.fromJson(map));
   }
 }

@@ -9,8 +9,8 @@ class AuthService implements AuthInterface {
   @override
   Future<User> performLogin() async {
     print("AuthService");
-    await _apiService.getUserFromAPI("", "");
-    print("End AuthService");
-    return Future(() => User(email: "test@gmail.com", isLoggedIn: true));
+    User loggeduser = await _apiService.loginUser("mitch@gmail.com", "letmein");
+    print("End AuthService $loggeduser");
+    return Future(() => loggeduser);
   }
 }

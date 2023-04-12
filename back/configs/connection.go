@@ -28,7 +28,7 @@ func (db *DBconnection) CreateConnection() {
 
 	databaseURI <- util.GodotEnv("DATABASE_URI")
 
-	log.Printf("DB CONNECTION GO_ENV SETTING:%v:::DB URI:%v", os.Getenv("GO_ENV"), util.GodotEnv("DATABASE_URI"))
+	log.Printf("DB CONNECTION ENVTORUN SETTING:%v:::DB URI:%v", os.Getenv("ENVTORUN"), util.GodotEnv("DATABASE_URI"))
 
 	var uptime = 10
 	var client driver.Client
@@ -57,6 +57,8 @@ func (db *DBconnection) CreateConnection() {
 		time.Sleep(5 * time.Second)
 
 		ctx := context.Background()
+		huh, err := client.Databases(ctx)
+		logrus.Info("huh", huh)
 		what, err := client.DatabaseExists(ctx, "smacktalk")
 		if err != nil {
 			logrus.Info("Try again. Smacktalk DB isnt found:   ", err.Error())

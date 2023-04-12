@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   context.read<AuthBloc>().add(SignIn(
                       user:
-                          User(email: "test@gmail.com", password: "password")));
+                          User(email: "mitch@gmail.com", password: "letmein")));
                 },
                 child: const Text("Login"))
           ],
