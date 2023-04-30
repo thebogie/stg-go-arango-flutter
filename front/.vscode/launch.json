@@ -1,26 +1,23 @@
+
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "smacktalkgaming-website",
+      "name": "Flutter Web",
       "request": "launch",
       "type": "dart",
-      "deviceId": "edge"
-    },
-    {
-      "name": "smacktalkgaming-website (profile mode)",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "profile"
-    },
-    {
-      "name": "smacktalkgaming-website (release mode)",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "release"
+      "program": "lib/main.dart",
+      "args": ["--web-port", "8080"],
+      "cwd": "${workspaceFolder}",
+      "webDaemonLogFile": "${workspaceFolder}/web.log",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "package:": "${workspaceFolder}/.dart_tool/package_config.json"
+      },
+      "env": {
+        "FLUTTER_WEB_DEBUGGER": "true"
+      },
+      "debugSdkLibraries": true
     }
   ]
 }

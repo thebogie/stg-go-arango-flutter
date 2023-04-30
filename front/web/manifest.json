@@ -1,11 +1,11 @@
 {
-    "name": "flutter_bloc_skeleton",
-    "short_name": "flutter_bloc_skeleton",
+    "name": "smacktalkgaming",
+    "short_name": "smacktalkgaming",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Rick and Morty",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
