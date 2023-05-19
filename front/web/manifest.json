@@ -1,11 +1,11 @@
 {
-    "name": "smacktalkgaming",
-    "short_name": "smacktalkgaming",
+    "name": "front",
+    "short_name": "front",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Rick and Morty",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

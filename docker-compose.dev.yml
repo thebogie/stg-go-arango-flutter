@@ -8,7 +8,7 @@ services:
     environment:
       ARANGO_ROOT_PASSWORD: letmein
     volumes:
-      - C:/stg/arangodbstorage:/var/lib/arangodb3
+      - C:/work/arangodbstorage:/var/lib/arangodb3
     networks:
       # Networks to join (Services on the same network can communicate with each other using their name)
       - stg
