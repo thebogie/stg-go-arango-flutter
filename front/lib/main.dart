@@ -1,35 +1,23 @@
-// lib/main.dart
-
 import 'package:flutter/material.dart';
-import 'package:smacktalkgaming/data/datasources/authentication_remote_data_source.dart';
-import 'package:smacktalkgaming/data/repositories/user_data_repository.dart';
-import 'package:smacktalkgaming/domain/repositories/user_repository.dart';
-import 'package:smacktalkgaming/domain/usecases/login_usecase.dart';
-import 'package:smacktalkgaming/presentation/screens/login_screen.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  final AuthenticationRemoteDataSource authenticationRemoteDataSource =
-      AuthenticationRemoteDataSource();
-  final UserRepository userRepository =
-      UserDataRepository(authenticationRemoteDataSource);
-  final LoginUseCase loginUseCase = LoginUseCase(userRepository);
+import 'src/provider/account_provider.dart';
+import 'src/ui/splash/splash_page.dart';
 
-  runApp(MyApp(loginUseCase));
-}
+void main() => runApp(const MainApp());
 
-class MyApp extends StatelessWidget {
-  final LoginUseCase loginUseCase;
-
-  MyApp(this.loginUseCase);
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (BuildContext context) {
+        return AccountProvider();
+      },
+      child: const MaterialApp(
+        home: SplashPage(),
       ),
-      home: LoginScreen(loginUseCase),
     );
   }
 }

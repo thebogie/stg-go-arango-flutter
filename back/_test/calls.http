@@ -1,0 +1,11 @@
+GRAPHQL http://localhost:50002/graphql
+
+query {
+  getUser(userName: "My Favorite User") {
+    name
+    comments {
+      text
+      by
+    }
+  }
+}

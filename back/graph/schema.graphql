@@ -1,0 +1,20 @@
+# graph/schema.graphql
+type User {
+  id: ID!
+  username: String!
+  email: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type Query {
+  me: User!
+}
+
+type Mutation {
+  registerUser(username: String!, email: String!, password: String!): AuthPayload!
+  loginUser(email: String!, password: String!): AuthPayload!
+}

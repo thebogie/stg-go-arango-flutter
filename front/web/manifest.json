@@ -1,11 +1,11 @@
 {
-    "name": "front",
-    "short_name": "front",
+    "name": "jwt_auth",
+    "short_name": "jwt_auth",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Flutter JWT Auth with provider, shared_preferences, and dio",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
