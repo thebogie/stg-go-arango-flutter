@@ -1,25 +1,60 @@
 // internal/repository/user_repository.go
 package repository
 
-import "back/internal/domain"
+import (
+	connection "back/internal/db"
+	"back/internal/domain"
+	"context"
+)
 
 type UserRepository interface {
 	FindByEmail(email string) (*domain.User, error)
 	Save(user *domain.User) error
+	FindUserByID(id string) (*domain.User, error)
 }
 
 type userRepository struct {
-	// Add any necessary dependencies or database connection here
+	dbconn *connection.DatabaseConnection
 }
 
-func NewUserRepository() UserRepository {
+func NewUserRepository(dbconn *connection.DatabaseConnection) UserRepository {
 	return &userRepository{
-		// Initialize any dependencies or database connection here
-	}
+		dbconn: dbconn}
 }
 
 // Implement the UserRepository methods
 func (r *userRepository) FindByEmail(email string) (*domain.User, error) {
+	query := "FOR d IN player FILTER d.email == @email RETURN d"
+	bindVars := map[string]interface{}{
+		"email": email,
+	}
+	//TODO: pass context from top level?
+	ctx := context.Background()
+	cursor, err := r.dbconn.Db.Query(ctx, query, bindVars)
+	if err != nil {
+
+	}
+	defer cursor.Close()
+	return &domain.User{}, nil
+
+	// Implement the logic to find a user by email
+	return nil, nil
+}
+
+func (r *userRepository) FindUserByID(userid string) (*domain.User, error) {
+	query := "FOR d IN player FILTER d.email == @email RETURN d"
+	bindVars := map[string]interface{}{
+		"email": userid,
+	}
+	//TODO: pass context from top level?
+	ctx := context.Background()
+	cursor, err := r.dbconn.Db.Query(ctx, query, bindVars)
+	if err != nil {
+
+	}
+	defer cursor.Close()
+	return &domain.User{}, nil
+
 	// Implement the logic to find a user by email
 	return nil, nil
 }

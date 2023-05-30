@@ -2,6 +2,7 @@
 package main
 
 import (
+	connection "back/internal/db"
 	"log"
 	"net/http"
 
@@ -12,8 +13,11 @@ import (
 )
 
 func main() {
-	userRepository := repository.NewUserRepository() // Implement your user repository
-	authRepository := repository.NewAuthRepository() // Implement your authentication repository
+
+	dbConn, _ := connection.GetDatabaseConnection()
+
+	userRepository := repository.NewUserRepository(dbConn) // Implement your user repository
+	authRepository := repository.NewAuthRepository(dbConn) // Implement your authentication repository
 
 	userService := service.NewUserService(userRepository) // Implement your user service
 	authService := service.NewAuthService(authRepository) // Implement your authentication service

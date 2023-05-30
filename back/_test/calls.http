@@ -1,11 +1,23 @@
 GRAPHQL http://localhost:50002/graphql
+Set-Cookie: auth-cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdGNoQGdtYWlsLmNvbSIsImV4cCI6MTY4NTU1OTg5OSwidXNlcl9pZCI6InBsYXllci8yMDIzMDMyOTE1MjY0MzgwNjM2OTkwNTAwIn0.JcYPziDkMUtnhbWPTAvb63nx3uzy2q0DzdaUaLXELyg;
 
 query {
-  getUser(userName: "My Favorite User") {
-    name
-    comments {
-      text
-      by
-    }
+  me {
+    id
   }
 }
+
+####
+GRAPHQL http://localhost:50002/graphql
+
+mutation LoginUser{
+  loginUser(email: "mitch@gmail.com", password: "letmein") {
+    token
+  }
+}
+
+
+
+
+
+

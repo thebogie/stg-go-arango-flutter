@@ -1,11 +1,14 @@
-// graph/resolver.go
 package graph
 
 import (
 	"back/graph/generated"
 	genmodel "back/graph/generated/model"
 	"back/internal/usecase"
+	"back/web/middleware/auth"
 	"context"
+	"fmt"
+	"github.com/golang-jwt/jwt"
+	"time"
 )
 
 type Resolver struct {
@@ -38,9 +41,9 @@ func (r *mutationResolver) RegisterUser(ctx context.Context, username string, em
 	authPayload := &genmodel.AuthPayload{
 		Token: result.Token,
 		User: &genmodel.User{
-			ID:       result.User.ID,
-			Username: result.User.Username,
-			Email:    result.User.Email,
+			ID:        result.User.Id,
+			Firstname: result.User.Firstname,
+			Email:     result.User.Email,
 		},
 	}
 
@@ -48,22 +51,45 @@ func (r *mutationResolver) RegisterUser(ctx context.Context, username string, em
 }
 
 func (r *mutationResolver) LoginUser(ctx context.Context, email string, password string) (*genmodel.AuthPayload, error) {
+	//TODO: get via config
+	var jwtKey = []byte("your-secret-key")
 
 	// Invoke the corresponding use case method using the generated model types
-	result, err := r.Resolver.authUsecase.LoginUser(email, password)
+	founduser, err := r.Resolver.authUsecase.LoginUser(email, password)
 	if err != nil {
 		return nil, err
 	}
 
+	claims := jwt.MapClaims{
+		"user_id": founduser.User.Id,
+		"email":   founduser.User.Email,
+		"exp":     time.Now().Add(time.Hour * 24).Unix(),
+	}
+
+	// Create a new JWT token
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+
+	// Sign the token with the secret key
+	tokenString, err := token.SignedString(jwtKey)
+	if err != nil {
+		//http.Error(w, err.Error(), http.StatusInternalServerError)
+
+	}
+
 	// Convert the result to the generated AuthPayload type
 	authPayload := &genmodel.AuthPayload{
-		Token: result.Token,
+		Token: tokenString,
 		User: &genmodel.User{
-			ID:       result.User.ID,
-			Username: result.User.Username,
-			Email:    result.User.Email,
+			ID:        founduser.User.Id,
+			Firstname: founduser.User.Firstname,
+			Email:     founduser.User.Email,
 		},
 	}
+
+	CA := auth.GetCookieAccess(ctx)
+	CA.SetToken(tokenString)
+	CA.Id = founduser.User.Id
+	CA.IsLoggedIn = true
 
 	return authPayload, nil
 
@@ -77,9 +103,14 @@ type queryResolver struct{ *Resolver }
 
 func (r *queryResolver) Me(ctx context.Context) (*genmodel.User, error) {
 	// Implement the logic to retrieve the authenticated user
+
+	CA := auth.GetCookieAccess(ctx)
+	if !CA.IsLoggedIn {
+		return &genmodel.User{}, fmt.Errorf("Access denied")
+	}
 	return &genmodel.User{
-		ID:       "fish",
-		Username: "Mr Toad",
-		Email:    "mrtoad@gmail.com",
+		ID:        "fish",
+		Firstname: "Mr Toad",
+		Email:     "mrtoad@gmail.com",
 	}, nil
 }

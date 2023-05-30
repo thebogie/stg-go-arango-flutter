@@ -1,8 +1,11 @@
 # graph/schema.graphql
 type User {
-  id: ID!
-  username: String!
-  email: String!
+  key: String!
+id:      String!
+rev       :String!
+firstname :String!
+email     :String!
+password :String!
 }
 
 type AuthPayload {
