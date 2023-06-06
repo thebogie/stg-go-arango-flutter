@@ -2,15 +2,15 @@
 package usecase
 
 import (
-	"back/internal/domain"
+	genmodel "back/graph/generated/model"
 	service "back/internal/service"
-	"github.com/sirupsen/logrus"
+	"log"
 )
 
 type UserUsecase interface {
-	RegisterUser(username, email, password string) (*domain.AuthPayload, error)
-	FindUserByEmail(email string) (*domain.User, error)
-	FindUserByID(id string) (*domain.User, error)
+	RegisterUser(username, email, password string) (*genmodel.AuthPayload, error)
+	FindUserByEmail(email string) (*genmodel.User, error)
+	FindUserByID(id string) (*genmodel.User, error)
 }
 
 type userUsecase struct {
@@ -24,22 +24,22 @@ func NewUserUsecase(userService service.UserService) UserUsecase {
 }
 
 // Implement the UserUsecase methods
-func (u *userUsecase) RegisterUser(username, email, password string) (*domain.AuthPayload, error) {
+func (u *userUsecase) RegisterUser(username, email, password string) (*genmodel.AuthPayload, error) {
 	// Implement the logic to register a user
 	return nil, nil
 }
 
-func (u *userUsecase) FindUserByEmail(email string) (*domain.User, error) {
+func (u *userUsecase) FindUserByEmail(email string) (*genmodel.User, error) {
 	user, err := u.userService.FindUserByEmail(email)
-	logrus.Printf(user.Email)
+	log.Printf(user.Email)
 	if err != nil {
 	}
-	return nil, nil
+	return user, nil
 }
 
-func (u *userUsecase) FindUserByID(userid string) (*domain.User, error) {
+func (u *userUsecase) FindUserByID(userid string) (*genmodel.User, error) {
 	user, err := u.userService.FindUserByID(userid)
-	logrus.Printf(user.Email)
+	log.Printf(user.Email)
 	if err != nil {
 	}
 	return nil, nil

@@ -1,13 +1,13 @@
 package repository
 
 import (
+	genmodel "back/graph/generated/model"
 	connection "back/internal/db"
-	"back/internal/domain"
 	"context"
 )
 
 type AuthRepository interface {
-	FindByEmail(email string) (*domain.User, error)
+	FindByEmail(email string) (*genmodel.User, error)
 }
 
 type authRepository struct {
@@ -19,7 +19,7 @@ func NewAuthRepository(dbconn *connection.DatabaseConnection) AuthRepository {
 		dbconn: dbconn}
 }
 
-func (r *authRepository) FindByEmail(email string) (*domain.User, error) {
+func (r *authRepository) FindByEmail(email string) (*genmodel.User, error) {
 	query := "FOR d IN player FILTER d.email == @email RETURN d"
 	bindVars := map[string]interface{}{
 		"email": email,
@@ -32,7 +32,7 @@ func (r *authRepository) FindByEmail(email string) (*domain.User, error) {
 	}
 	defer cursor.Close()
 
-	var retuser = &domain.User{}
+	var retuser = &genmodel.User{}
 	_, err = cursor.ReadDocument(ctx, &retuser)
 	if err != nil {
 

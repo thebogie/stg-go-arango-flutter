@@ -2,7 +2,8 @@
 package service
 
 import (
-	"back/internal/domain"
+	genmodel "back/graph/generated/model"
+
 	repo "back/internal/repository"
 	"fmt"
 	"github.com/sirupsen/logrus"
@@ -10,8 +11,8 @@ import (
 )
 
 type AuthService interface {
-	LoginUser(email, password string) (*domain.AuthPayload, error)
-	CheckAuthUser(email, password string) (*domain.AuthPayload, error)
+	LoginUser(email, password string) (*genmodel.AuthPayload, error)
+	CheckAuthUser(email, password string) (*genmodel.AuthPayload, error)
 }
 
 type authService struct {
@@ -25,7 +26,7 @@ func NewAuthService(authRepository repo.AuthRepository) AuthService {
 }
 
 // Implement the UserService methods
-func (s *authService) LoginUser(email, password string) (*domain.AuthPayload, error) {
+func (s *authService) LoginUser(email, password string) (*genmodel.AuthPayload, error) {
 	pay, err := s.CheckAuthUser(email, password)
 	if err != nil {
 		//error
@@ -33,7 +34,7 @@ func (s *authService) LoginUser(email, password string) (*domain.AuthPayload, er
 	return pay, err
 }
 
-func (s *authService) CheckAuthUser(email, password string) (*domain.AuthPayload, error) {
+func (s *authService) CheckAuthUser(email, password string) (*genmodel.AuthPayload, error) {
 	founduser, err := s.authRepository.FindByEmail(email)
 	if err != nil {
 
@@ -57,10 +58,10 @@ func (s *authService) CheckAuthUser(email, password string) (*domain.AuthPayload
 	fmt.Println("Password is valid")
 	logrus.Debug(founduser)
 
-	return &domain.AuthPayload{
+	return &genmodel.AuthPayload{
 		Token: "",
-		User: domain.User{
-			Id:        founduser.Id,
+		User: &genmodel.User{
+			ID:        founduser.ID,
 			Firstname: founduser.Firstname,
 			Email:     founduser.Email,
 		},

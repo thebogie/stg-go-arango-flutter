@@ -1,7 +1,7 @@
 # graph/schema.graphql
 type User {
-  key: String!
-id:      String!
+  _key: String!
+_id:      String!
 rev       :String!
 firstname :String!
 email     :String!
@@ -14,7 +14,7 @@ type AuthPayload {
 }
 
 type Query {
-  me: User!
+  findUserByEmail(email: String!): User!
 }
 
 type Mutation {

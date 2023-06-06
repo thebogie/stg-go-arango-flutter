@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/golang-jwt/jwt"
+	"net/http"
 	"time"
 )
 
@@ -41,7 +42,7 @@ func (r *mutationResolver) RegisterUser(ctx context.Context, username string, em
 	authPayload := &genmodel.AuthPayload{
 		Token: result.Token,
 		User: &genmodel.User{
-			ID:        result.User.Id,
+			ID:        result.User.ID,
 			Firstname: result.User.Firstname,
 			Email:     result.User.Email,
 		},
@@ -61,7 +62,7 @@ func (r *mutationResolver) LoginUser(ctx context.Context, email string, password
 	}
 
 	claims := jwt.MapClaims{
-		"user_id": founduser.User.Id,
+		"user_id": founduser.User.ID,
 		"email":   founduser.User.Email,
 		"exp":     time.Now().Add(time.Hour * 24).Unix(),
 	}
@@ -76,11 +77,23 @@ func (r *mutationResolver) LoginUser(ctx context.Context, email string, password
 
 	}
 
+	//passed save cookie
+	cookie := &http.Cookie{
+		Name:    "token",
+		Value:   tokenString,
+		Expires: time.Now().Add(time.Hour * 24),
+		Path:    "/",
+	}
+
+	var writeit = ctx.Value("auth-cookie").(*auth.CookieAccess).Writer
+	// Set the cookie in the response
+	http.SetCookie(writeit, cookie)
+
 	// Convert the result to the generated AuthPayload type
 	authPayload := &genmodel.AuthPayload{
 		Token: tokenString,
 		User: &genmodel.User{
-			ID:        founduser.User.Id,
+			ID:        founduser.User.ID,
 			Firstname: founduser.User.Firstname,
 			Email:     founduser.User.Email,
 		},
@@ -88,7 +101,7 @@ func (r *mutationResolver) LoginUser(ctx context.Context, email string, password
 
 	CA := auth.GetCookieAccess(ctx)
 	CA.SetToken(tokenString)
-	CA.Id = founduser.User.Id
+	CA.Id = founduser.User.ID
 	CA.IsLoggedIn = true
 
 	return authPayload, nil
@@ -101,16 +114,19 @@ func (r *Resolver) Query() generated.QueryResolver {
 
 type queryResolver struct{ *Resolver }
 
-func (r *queryResolver) Me(ctx context.Context) (*genmodel.User, error) {
+func (r *queryResolver) FindUserByEmail(ctx context.Context, email string) (*genmodel.User, error) {
 	// Implement the logic to retrieve the authenticated user
 
 	CA := auth.GetCookieAccess(ctx)
 	if !CA.IsLoggedIn {
 		return &genmodel.User{}, fmt.Errorf("Access denied")
 	}
-	return &genmodel.User{
-		ID:        "fish",
-		Firstname: "Mr Toad",
-		Email:     "mrtoad@gmail.com",
-	}, nil
+
+	founduser, err := r.userUsecase.FindUserByEmail(email)
+
+	if err != nil {
+
+	}
+
+	return founduser, err
 }

@@ -2,15 +2,15 @@
 package service
 
 import (
-	"back/internal/domain"
+	genmodel "back/graph/generated/model"
 	repo "back/internal/repository"
 	"github.com/sirupsen/logrus"
 )
 
 type UserService interface {
-	RegisterUser(username, email, password string) (*domain.AuthPayload, error)
-	FindUserByEmail(email string) (*domain.User, error)
-	FindUserByID(userid string) (*domain.User, error)
+	RegisterUser(username, email, password string) (*genmodel.AuthPayload, error)
+	FindUserByEmail(email string) (*genmodel.User, error)
+	FindUserByID(userid string) (*genmodel.User, error)
 }
 
 type userService struct {
@@ -24,12 +24,12 @@ func NewUserService(userRepository repo.UserRepository) UserService {
 }
 
 // Implement the UserService methods
-func (s *userService) RegisterUser(username, email, password string) (*domain.AuthPayload, error) {
+func (s *userService) RegisterUser(username, email, password string) (*genmodel.AuthPayload, error) {
 	// Implement the logic to register a user
 	return nil, nil
 }
 
-func (s *userService) FindUserByEmail(email string) (*domain.User, error) {
+func (s *userService) FindUserByEmail(email string) (*genmodel.User, error) {
 	user, err := s.userRepository.FindByEmail(email)
 	logrus.Printf(user.Email)
 	if err != nil {
@@ -37,7 +37,7 @@ func (s *userService) FindUserByEmail(email string) (*domain.User, error) {
 	return nil, nil
 }
 
-func (s *userService) FindUserByID(id string) (*domain.User, error) {
+func (s *userService) FindUserByID(id string) (*genmodel.User, error) {
 	user, err := s.userRepository.FindUserByID(id)
 	logrus.Printf(user.Email)
 	if err != nil {

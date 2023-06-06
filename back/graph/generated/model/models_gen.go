@@ -8,8 +8,8 @@ type AuthPayload struct {
 }
 
 type User struct {
-	Key       string `json:"key"`
-	ID        string `json:"id"`
+	Key       string `json:"_key"`
+	ID        string `json:"_id"`
 	Rev       string `json:"rev"`
 	Firstname string `json:"firstname"`
 	Email     string `json:"email"`
